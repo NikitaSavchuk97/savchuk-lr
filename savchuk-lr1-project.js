@@ -57,8 +57,15 @@ async function inputN() {
 }
 
 function findDigitRightToLeft() {
-    // Реализация будет добавлена позже
-    return -1;
+	if (K === 0 || N === 0) {
+			console.log('Ошибка: сначала введите K и N!');
+			return -1;
+	}
+	
+	const strK = K.toString();
+	if (N > strK.length) return -1;
+	
+	return parseInt(strK[strK.length - N], 10);
 }
 
 function findDigitLeftToRight() {
