@@ -40,7 +40,20 @@ async function inputK() {
 }
 
 async function inputN() {
-    // Реализация будет добавлена позже
+	let isValid = false;
+	while (!isValid) {
+			const input = (await questionAsync('Введите цифру N (1-9): ')).trim();
+			
+			// Проверка на одну цифру
+			if (!/^[1-9]$/.test(input)) {
+					console.log('Ошибка: N должно быть цифрой от 1 до 9!');
+					continue;
+			}
+
+			N = parseInt(input, 10);
+			isValid = true;
+			console.log(`Цифра N = ${N} успешно сохранена!`);
+	}
 }
 
 function findDigitRightToLeft() {
