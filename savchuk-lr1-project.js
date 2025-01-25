@@ -16,7 +16,27 @@ function questionAsync(prompt) {
 }
 
 async function inputK() {
-    // Реализация будет добавлена позже
+	let isValid = false;
+	while (!isValid) {
+			const input = (await questionAsync('Введите натуральное число K: ')).trim();
+			
+			// Проверка формата с помощью регулярного выражения
+			if (!/^[1-9]\d*$/.test(input)) {
+					console.log('Ошибка: K должно быть целым положительным числом без ведущих нулей!');
+					continue;
+			}
+
+			// Преобразование в число и дополнительная проверка
+			const number = parseInt(input, 10);
+			if (isNaN(number) || number <= 0) {
+					console.log('Ошибка: введите корректное натуральное число!');
+					continue;
+			}
+
+			K = number;
+			isValid = true;
+			console.log(`Число K = ${K} успешно сохранено!`);
+	}
 }
 
 async function inputN() {
