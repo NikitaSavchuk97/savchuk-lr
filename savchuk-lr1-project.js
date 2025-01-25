@@ -57,27 +57,59 @@ async function inputN() {
 }
 
 function findDigitRightToLeft() {
-	if (K === 0 || N === 0) {
-			console.log('Ошибка: сначала введите K и N!');
+	// Проверка инициализации K
+	if (K <= 0) {
+			console.log('❌ Ошибка: Число K не инициализировано!| Сначала выполните пункт 1 меню');
 			return -1;
 	}
 	
+	// Проверка инициализации N
+	if (N <= 0) {
+			console.log('❌ Ошибка: Позиция N не задана!| Сначала выполните пункт 2 меню');
+			return -1;
+	}
+
 	const strK = K.toString();
-	if (N > strK.length) return -1;
+	const length = strK.length;
 	
-	return parseInt(strK[strK.length - N], 10);
+	// Проверка допустимости диапазона N
+	if (N > length) {
+			console.log(`❌ Ошибка: В числе ${K} всего ${length} цифр(ы). | Невозможно найти ${N}-ю цифру справа`);
+			return -1;
+	}
+	
+	// Успешный результат
+	const result = Number(strK[length - N]);
+	console.log(`✅ Цифра №${N} справа в числе ${K}: ${result}`);
+	return result;
 }
 
 function findDigitLeftToRight() {
-	if (K === 0 || N === 0) {
-			console.log('Ошибка: сначала введите K и N!');
+	// Проверка инициализации K
+	if (K <= 0) {
+			console.log('❌ Ошибка: Число K не инициализировано! | Сначала выполните пункт 1 меню');
 			return -1;
 	}
 	
+	// Проверка инициализации N
+	if (N <= 0) {
+			console.log('❌ Ошибка: Позиция N не задана! | Сначала выполните пункт 2 меню ');
+			return -1;
+	}
+
 	const strK = K.toString();
-	if (N > strK.length) return -1;
+	const length = strK.length;
 	
-	return parseInt(strK[N-1], 10);
+	// Проверка допустимости диапазона N
+	if (N > length) {
+			console.log(`❌ Ошибка: В числе ${K} всего ${length} цифр(ы). | Невозможно найти ${N}-ю цифру слева`);
+			return -1;
+	}
+	
+	// Успешный результат
+	const result = Number(strK[N-1]);
+	console.log(`✅ Цифра №${N} слева в числе ${K}: ${result}`);
+	return result;
 }
 
 async function mainMenu() {
