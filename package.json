@@ -4,8 +4,8 @@
   "main": "savchuk-lr1-project.js",
   "bin": "savchuk-lr1-project.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "pkg . --out-path dist/"
+    "build": "pkg . --out-path dist/",
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -29,6 +29,7 @@
     "outputPath": "dist"
   },
   "devDependencies": {
+    "jest": "^29.7.0",
     "pkg": "^5.8.1"
   }
 }
